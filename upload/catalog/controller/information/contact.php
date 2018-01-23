@@ -170,6 +170,8 @@ class ControllerInformationContact extends Controller {
 		$this->load->language('information/contact');
 
 		$this->document->setTitle($this->language->get('heading_title'));
+		
+		$data['text_success'] = $this->language->get('text_success');
 
 		$data['breadcrumbs'] = array();
 
