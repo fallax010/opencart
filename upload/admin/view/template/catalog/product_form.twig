@@ -360,7 +360,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="{{ help_related }}">{{ entry_related }}</span></label>
                 <div class="col-sm-10">
-                  <input type="text" name="related" value="" placeholder="{{ entry_related }}" id="input-related" class="form-control"/>
+                  <input type="text" value="" placeholder="{{ entry_related }}" id="input-related" class="form-control"/>
                   <div id="product-related" class="well well-sm" style="height: 150px; overflow: auto;"> {% for product_related in product_relateds %}
                       <div id="product-related{{ product_related.product_id }}"><i class="fa fa-minus-circle"></i> {{ product_related.name }}
                         <input type="hidden" name="product_related[]" value="{{ product_related.product_id }}"/>
@@ -814,7 +814,7 @@ $('#product-download').delegate('.fa-minus-circle', 'click', function() {
 });
 
 // Related
-$('input[name=\'related\']').autocomplete({
+$('#input-related').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
 			url: 'index.php?route=catalog/product/autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
@@ -830,7 +830,7 @@ $('input[name=\'related\']').autocomplete({
 		});
 	},
 	'select': function(item) {
-		$('input[name=\'related\']').val('');
+		$('#input-related').val('');
 
 		$('#product-related' + item['value']).remove();
 
