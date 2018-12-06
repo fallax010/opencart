@@ -374,7 +374,7 @@
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="input-related">{{ entry_related }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="related" value="" placeholder="{{ entry_related }}" id="input-related" class="form-control"/>
+                  <input type="text" value="" placeholder="{{ entry_related }}" id="input-related" class="form-control"/>
                   <div id="product-related" class="form-control" style="height: 150px; overflow: auto;">
                     {% for product_related in product_relateds %}
                       <div id="product-related{{ product_related.product_id }}"><i class="fas fa-minus-circle"></i> {{ product_related.name }}
@@ -836,7 +836,7 @@ $('#product-download').on('click', '.fa-minus-circle', function() {
 });
 
 // Related
-$('input[name=\'related\']').autocomplete({
+$('#input-related').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
 			url: 'index.php?route=catalog/product/autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
